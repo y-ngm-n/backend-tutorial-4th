@@ -6,6 +6,7 @@ const User = require("../../models/User");
 const view = {
     root: (req, res) => { res.render("home/root"); },
     login: (req, res) => { res.render("home/login"); },
+    register: (req, res) => { res.render("home/register"); },
 };
 
 // 로그인 처리
