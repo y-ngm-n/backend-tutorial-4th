@@ -11,7 +11,7 @@ class UserStorage {
         name: ["앙민", "송", "앙"],
     };
 
-    // 데이터 제공 메서드
+    // 데이터 필드 제공 메서드
     static getUsers(...fields) {
         const users = this.#users;
         const newUsers = fields.reduce((newUsers, field) => {
