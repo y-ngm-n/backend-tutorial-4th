@@ -32,6 +32,16 @@ class UserStorage {
         }, {});
         return userInfo;
     }
+
+    // 신규 데이터 저장 메서드
+    static save(userInfo) {
+        const users = this.#users;
+        users.id.push(userInfo.id);
+        users.name.push(userInfo.name);
+        users.pw.push(userInfo.pw);
+
+        return { success: true };
+    }
 }
 
 
