@@ -12,7 +12,7 @@ function login() {
         id: id.value,
         pw: pw.value,
     };
-    
+
     fetch("/login", {
         method: "POST",
         headers: {
@@ -20,4 +20,4 @@ function login() {
         },
         body: JSON.stringify(req)
     });
-}
+};
