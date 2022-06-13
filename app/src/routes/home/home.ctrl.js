@@ -1,11 +1,6 @@
 "use strict"
 
-// 임시 데이터
-const users = {
-    id: ["y__ngm_n", "song", "young"],
-    pw: ["123", "123", "1234"]
-};
-
+const UserStorage = require("../../models/UserStorage");
 
 // 렌더링
 const view = {
@@ -19,17 +14,20 @@ const process = {
         const id = req.body.id;
         const pw = req.body.pw;
 
+        const users = UserStorage.getUsers("id", "pw");
+
+        const response = {};
         if (users.id.includes(id)) {
             const idx = users.id.indexOf(id);
-            if (users.pw[idx]===pw) {return res.json({
-                success: true,
-            });}
+            if (users.pw[idx]===pw) {
+                response.success = true;
+                return res.json(response);
+            }
         }
 
-        return res.json({
-            success: false,
-            msg: "login failed",
-        });
+        response.success = false;
+        response.msg = "login failed";
+        return res.json(response);
     }
 };
 
