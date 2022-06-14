@@ -10,15 +10,19 @@ class User {
     // 로그인
     async login() {
         const client = this.body;
-        const { id, pw } = await UserStorage.getUserInfo(client.id);
+        try {
+            const { id, pw } = await UserStorage.getUserInfo(client.id);
 
-        if (id) {
-            if (id===client.id && pw===client.pw) {
-                return { success: true };
+            if (id) {
+                if (id===client.id && pw===client.pw) {
+                    return { success: true };
+                }
+                return { success: false, msg: "비밀번호가 틀렸습니다." };
             }
-            return { success: false, msg: "비밀번호가 틀렸습니다." };
+            return { success: false, msg: "존재하지 않는 아이디입니다." };
+        } catch (err) {
+            return { success: false, msg: err };
         }
-        return { success: false, msg: "존재하지 않는 아이디입니다." };
     }
 
     // 회원가입

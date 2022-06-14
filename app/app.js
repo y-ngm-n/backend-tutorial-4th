@@ -3,6 +3,8 @@
 const express = require('express');
 const bodyParser = require("body-parser");
 const home = require("./src/routes/home/index"); // 라우팅
+const dotenv = require("dotenv"); // 환경변수
+dotenv.config();
 
 const app = express();
 
