@@ -8,9 +8,6 @@ const dotenv = require("dotenv"); // 환경변수
 const app = express();
 dotenv.config();
 
-// 로그 세팅
-const logger = require("./src/config/logger");
-logger.error("어라라..");
 
 // 앱 세팅
 app.set("views", "./src/views");
